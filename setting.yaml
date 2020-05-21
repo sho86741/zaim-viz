@@ -1,0 +1,5 @@
+config:
+  user: ""
+  pw: ""
+  from_date: ""    #YYYYmmdd
+  to_date: ""      #YYYYmmdd

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  elasticsearch:
+    build: .
+    image: custom-es:1.0.0
+    ports:
+      - 9200:9200
+    networks: [elastic]
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - /usr/share/elasticsearch/data:/usr/share/elasticsearch/data
+      - /opt/elasticsearch/backup:/opt/elasticsearch/backup
+    restart: always
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.7.0
+    ports:
+      - 5601:5601
+    networks: [elastic]
+    restart: always
+networks:
+  elastic:
