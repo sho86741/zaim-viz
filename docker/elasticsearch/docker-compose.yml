@@ -1,8 +1,7 @@
 version: '3'
 services:
   elasticsearch:
-    build: .
-    image: custom-es:1.0.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
     ports:
       - 9200:9200
     networks: [elastic]
@@ -11,6 +10,7 @@ services:
     volumes:
       - /usr/share/elasticsearch/data:/usr/share/elasticsearch/data
       - /opt/elasticsearch/backup:/opt/elasticsearch/backup
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     restart: always
   kibana:
     image: docker.elastic.co/kibana/kibana:7.7.0
